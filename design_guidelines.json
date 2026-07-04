@@ -1,0 +1,93 @@
+{
+  "project_name": "SentinelAI",
+  "theme": "Light",
+  "archetype": "Archetype 4: Swiss & High-Contrast (Authority, Clarity, Truth)",
+  "typography": {
+    "headings": {
+      "font_family": "Cabinet Grotesk, sans-serif",
+      "import_url": "https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700,400,900&display=swap",
+      "css_variable": "--font-cabinet"
+    },
+    "body": {
+      "font_family": "'IBM Plex Sans', sans-serif",
+      "import_url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap",
+      "css_variable": "--font-ibm-plex"
+    },
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl tracking-tight font-bold font-heading",
+      "h2": "text-2xl sm:text-3xl tracking-tight font-semibold font-heading",
+      "h3": "text-xl sm:text-2xl font-medium font-heading",
+      "body": "text-base leading-relaxed font-body text-foreground",
+      "small_labels": "text-xs tracking-[0.2em] uppercase font-semibold text-muted-foreground"
+    }
+  },
+  "colors": {
+    "background": "#FFFFFF",
+    "surface": "#F7F7F9",
+    "foreground": "#0A0A0A",
+    "primary": "#002FA7",
+    "primary_foreground": "#FFFFFF",
+    "destructive": "#D00000",
+    "warning": "#FFB000",
+    "success": "#00875A",
+    "muted": "#F3F4F6",
+    "muted_foreground": "#6B7280",
+    "border": "#E5E7EB",
+    "ring": "#002FA7"
+  },
+  "layout_and_spacing": {
+    "grid_system": "The 'Control Room' Grid",
+    "dashboard_grid": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6",
+    "spacing_scale": "Use p-6 for card interiors, py-8 for main sections. Ensure generous spacing within containers, but maintain density in tabular data.",
+    "border_radius": "0.25rem (4px) or rounded-sm for a sharp, technical, enterprise feel.",
+    "sidebar": "High-contrast Sidebar (Dark mode sidebar in a light theme app, or stark white with sharp 1px right border).",
+    "alignment": "Strict left-alignment for data and forms. Center only for zero-state/empty-state messages."
+  },
+  "surfaces_and_micro_themes": {
+    "cards": "Flat background (bg-card), 1px subtle border (border-border), no shadow. On hover: slight lift (-translate-y-1) and subtle shadow (shadow-md).",
+    "headers": "Solid Background with a hard 1px bottom border (border-b border-border).",
+    "modals_overlays": "Glassmorphism with heavy blur (backdrop-blur-xl bg-white/70) and 1px inner stroke.",
+    "status_badges": "High contrast pill badges. Red for critical, Yellow for alerts, Green for passing compliance, Grey for pending."
+  },
+  "components": {
+    "buttons": "Square or slightly rounded (rounded-sm). Primary: Solid Klein Blue (bg-primary). Secondary: Outline with stark text.",
+    "tables": "Dense rows. Stark headers (uppercase, tracking-wider, text-xs). Hover on rows: background shifts to muted (bg-muted/50).",
+    "charts": "Recharts with high-contrast lines. Use 'Single Trusted Number' pattern for top KPIs (massively sized numbers to reduce cognitive load).",
+    "agent_workflow_graph": "Use a node-based visual or vertical timeline to show the 8 agents (Coordinator, Fraud, Compliance, etc.). The active node should glow or pulse to indicate live processing.",
+    "file_upload": "Dashed border area with a central icon, light grey background. Changes to solid primary border on drag over."
+  },
+  "motion_and_interaction": {
+    "hover_states": "Must explicitly set text and background color (e.g., hover:bg-muted hover:text-foreground).",
+    "transitions": "Subtle and quick (transition-all duration-200 ease-in-out).",
+    "loading_states": "Shimmer loaders (animate-pulse) for data-heavy sections instead of spinners, ensuring trust and avoiding a 'broken' feeling during complex AI processing."
+  },
+  "media_and_assets": {
+    "icons_library": "lucide-react (Standard, clean, technical)",
+    "images": {
+      "login_hero_background": {
+        "url": "https://images.unsplash.com/photo-1531972111231-7482a960e109?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "description": "Clear glass building interior representing corporate transparency, structure, and enterprise scale."
+      },
+      "abstract_data_network": {
+        "url": "https://images.pexels.com/photos/17483870/pexels-photo-17483870.png",
+        "description": "Abstract illustration of complex digital neural networks, to be used in report headers or empty states."
+      }
+    }
+  },
+  "accessibility_and_testing": {
+    "contrast": "Ensure all text meets at least a 4.5:1 contrast ratio against backgrounds.",
+    "data_testid": "ALL interactive and key informational elements MUST include a data-testid attribute (e.g., data-testid='upload-financial-data-btn', data-testid='risk-score-value').",
+    "focus": "Visible focus rings are mandatory: focus:ring-2 focus:ring-primary focus:outline-none focus:ring-offset-2."
+  },
+  "instructions_to_main_agent": [
+    "Inject the font import URLs into /app/frontend/src/index.css or /app/frontend/public/index.html.",
+    "Update /app/frontend/tailwind.config.js to include Cabinet Grotesk (as font-heading) and IBM Plex Sans (as font-body), and set the border radius to 0.25rem.",
+    "Build standard React (.js/.jsx) functional components. Do not use TypeScript (.tsx).",
+    "Use Shadcn UI components extensively (Cards, Tables, Badges, Progress, Tabs, Dialogs) but strip out any overly soft rounded corners to fit the Swiss Brutalist/Enterprise tone.",
+    "Implement the 'Single Trusted Number' pattern in the dashboard. The primary KPI (like 'Overall Risk Score') should be massive and immediately visible.",
+    "Construct a visually distinct Agent Execution View displaying the 8 agents. A technical timeline, stepper, or dependency graph that highlights the active agent via SSE updates.",
+    "For the Benford's Law visualization in the findings, utilize a Recharts BarChart overlaid with a Line representing the expected logarithmic curve.",
+    "Do NOT use placeholder image URLs like via.placeholder.com. Use the URLs provided in the media_and_assets section.",
+    "Ensure the entire application feels like a mission-critical command center for elite auditors: data-dense, highly functional, deeply authoritative, and devoid of unnecessary visual fluff."
+  ]
+}

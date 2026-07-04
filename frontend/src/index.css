@@ -1,0 +1,138 @@
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700,400,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #FFFFFF;
+    color: #0A0A0A;
+}
+
+code, .mono {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 0 0% 4%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 4%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 4%;
+        --primary: 224 100% 33%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 240 5% 96%;
+        --secondary-foreground: 0 0% 4%;
+        --muted: 240 5% 96%;
+        --muted-foreground: 220 9% 46%;
+        --accent: 240 5% 96%;
+        --accent-foreground: 0 0% 4%;
+        --destructive: 0 100% 41%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 220 13% 91%;
+        --input: 220 13% 91%;
+        --ring: 224 100% 33%;
+        --success: 158 100% 27%;
+        --warning: 41 100% 50%;
+        --chart-1: 224 100% 33%;
+        --chart-2: 158 100% 27%;
+        --chart-3: 41 100% 50%;
+        --chart-4: 0 100% 41%;
+        --chart-5: 280 65% 60%;
+        --radius: 0.25rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+
+    h1, h2, h3, h4, h5 {
+        font-family: 'Cabinet Grotesk', 'IBM Plex Sans', sans-serif;
+        letter-spacing: -0.02em;
+    }
+
+    /* Selection color */
+    ::selection {
+        background: #002FA7;
+        color: white;
+    }
+}
+
+@layer utilities {
+    .font-heading {
+        font-family: 'Cabinet Grotesk', 'IBM Plex Sans', sans-serif;
+    }
+    .font-body {
+        font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    }
+    .font-mono {
+        font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    }
+    .tracking-overline {
+        letter-spacing: 0.2em;
+    }
+
+    /* Klein-blue glow for active agent nodes */
+    .agent-pulse {
+        animation: agentPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes agentPulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(0, 47, 167, 0.6); }
+        50% { box-shadow: 0 0 0 8px rgba(0, 47, 167, 0); }
+    }
+
+    /* Grid background pattern (subtle) */
+    .grid-bg {
+        background-image:
+            linear-gradient(rgba(0, 47, 167, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 47, 167, 0.04) 1px, transparent 1px);
+        background-size: 32px 32px;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+    .scrollbar-thin::-webkit-scrollbar-thumb { background: #C7CAD1; border-radius: 4px; }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}
