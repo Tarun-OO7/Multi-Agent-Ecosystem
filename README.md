@@ -51,7 +51,6 @@ This mirrors how a real audit team works: domain specialists analyze their slice
 
 ## System Architecture
 
-![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F32127457%2F7da09289af8c58144545e1c8878461aa%2FArchitecture%20diagram.png?generation=1783205700414460&alt=media)
 
 **Platform Architecture Overview**
 
