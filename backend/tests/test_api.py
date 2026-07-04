@@ -28,7 +28,8 @@ def test_authentication(mock_find_one):
         "email": "admin@test.com",
         "full_name": "Admin",
         "role": "admin",
-        "active": True
+        "active": True,
+        "created_at": "2023-01-01T00:00:00Z"
     }
     
     # Missing token
@@ -59,7 +60,7 @@ def test_report_generation(mock_call_llm_json):
     }
     
     async def run():
-        decision = await decision_agent({"audit_title": "Test"}, outputs, "audit_id")
+        decision = await decision_agent({"audit_title": "Test", "audit_id": "audit_id"}, outputs)
         report = await report_generation_agent({"audit_title": "Test"}, outputs, decision)
         return decision, report
         

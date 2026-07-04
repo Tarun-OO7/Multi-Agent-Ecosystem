@@ -20,7 +20,7 @@ import structlog
 from dotenv import load_dotenv
 from fastapi import (
     APIRouter, BackgroundTasks, Depends, FastAPI, File, Form, HTTPException,
-    Request, UploadFile, status,
+    Request, UploadFile, status, Body
 )
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response, StreamingResponse
@@ -527,20 +527,23 @@ async def admin_list_users(user: TokenData = Depends(require_role("admin"))):
     return {"users": await cursor.to_list(length=200)}
 
 
+class UserUpdate(BaseModel):
+    role: Optional[str] = None
+    active: Optional[bool] = None
+
 @api.patch("/admin/users/{user_id}")
 async def admin_update_user(
     user_id: str,
-    role: Optional[str] = Form(None),
-    active: Optional[bool] = Form(None),
+    payload: UserUpdate,
     user: TokenData = Depends(require_role("admin")),
 ):
     updates: dict[str, Any] = {}
-    if role is not None:
-        if role not in ("admin", "auditor", "viewer"):
+    if payload.role is not None:
+        if payload.role not in ("admin", "auditor", "viewer"):
             raise HTTPException(status_code=400, detail="Invalid role")
-        updates["role"] = role
-    if active is not None:
-        updates["active"] = active
+        updates["role"] = payload.role
+    if payload.active is not None:
+        updates["active"] = payload.active
     if not updates:
         raise HTTPException(status_code=400, detail="No updates")
     result = await users_col.update_one({"id": user_id}, {"$set": updates})

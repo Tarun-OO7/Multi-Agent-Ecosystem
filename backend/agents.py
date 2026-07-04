@@ -344,7 +344,7 @@ async def financial_analysis_agent(ctx: dict[str, Any]) -> dict[str, Any]:
 # ============================================================
 PII_PATTERNS = {
     "ssn": re.compile(r"\b\d{3}-\d{2}-\d{4}\b"),
-    "credit_card": re.compile(r"\b(?:\d[ -]*?){13,19}\b"),
+    "credit_card": re.compile(r"(?<!\.)\b(?:\d[ -]*?){13,19}\b(?!\.)"),
     "email": re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"),
     "phone": re.compile(r"\b\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}\b"),
 }
@@ -365,8 +365,8 @@ async def cybersecurity_agent(ctx: dict[str, Any]) -> dict[str, Any]:
     pii_counts: dict[str, int] = defaultdict(int)
     injection_count = 0
 
-    # Sample first 500 rows for performance
-    sample = df.head(500) if not df.empty else df
+    # Scan all rows (do not truncate)
+    sample = df
     for _, row in sample.iterrows():
         for val in row.values:
             s = str(val)
