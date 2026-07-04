@@ -56,7 +56,7 @@ SentinelAI follows a modern full-stack decoupled architecture:
 MONGO_URL=mongodb://localhost:27017
 DB_NAME=sentinelai
 JWT_SECRET=your_super_secret_key_change_in_production
-GEMINI_API_KEY=your_gemini_api_key
+GOOGLE_API_KEY=your_gemini_api_key
 CORS_ORIGINS=http://localhost:5173,http://localhost
 ```
 
@@ -144,4 +144,4 @@ python -m pytest tests/test_api.py -v
 
 - **MongoDB Indexes**: Handled idempotently at backend startup. If startup fails, verify DB connectivity.
 - **Memory Leaks**: Handled automatically. The server uses reference-counted caching to flush heavy DataFrames (`_dataframe_cache_refs`) once SSE queues shut down.
-- **Empty Reports**: Check the `GEMINI_API_KEY` quota if agents fail silently.
+- **Empty Reports**: Check the `GOOGLE_API_KEY` quota if agents fail silently.
